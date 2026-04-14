@@ -1,0 +1,370 @@
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Code2,
+  BrainCircuit,
+  Smartphone,
+  Palette,
+  Layers,
+  CheckCircle2,
+  Users,
+  Globe,
+  Zap,
+  ArrowUpRight,
+  Shield,
+  Clock,
+  TrendingUp,
+} from "lucide-react";
+import { Link } from "react-router";
+import { useRef } from "react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { useScroll, useTransform } from "motion/react";
+
+const services = [
+  { icon: Code2, title: "Web Development", desc: "Modern React & Next.js applications built for performance and scale.", color: "bg-blue-500" },
+  { icon: BrainCircuit, title: "AI Solutions", desc: "Custom LLM integration, automation bots, and intelligent data systems.", color: "bg-purple-500" },
+  { icon: Layers, title: "Software Development", desc: "Enterprise-grade software and scalable SaaS platforms.", color: "bg-emerald-500" },
+  { icon: Smartphone, title: "App Development", desc: "Native iOS and Android mobile experiences.", color: "bg-orange-500" },
+  { icon: Palette, title: "UI/UX Design", desc: "User-centric interfaces that are intuitive and beautiful.", color: "bg-pink-500" },
+];
+
+const whyUs = [
+  { icon: Shield, title: "Gurkha Resilience", desc: "We tackle every challenge with the same tenacity and determination that defines the Gurkha spirit." },
+  { icon: Zap, title: "Cutting-Edge Tech", desc: "We leverage the latest technologies including AI, cloud-native, and modern frameworks." },
+  { icon: Clock, title: "On-Time Delivery", desc: "Disciplined project management ensures your product ships on schedule, every time." },
+  { icon: TrendingUp, title: "Scalable Solutions", desc: "Architecture designed to grow with your business from day one to millions of users." },
+  { icon: Users, title: "Dedicated Team", desc: "A passionate team of engineers, designers, and strategists committed to your success." },
+  { icon: Globe, title: "Global Standards", desc: "Microsoft-backed quality with international best practices applied to every project." },
+];
+
+const clients = [
+  "Leapfrog Technology",
+  "Fusemachines",
+  "CloudFactory",
+  "Cotiviti Nepal",
+  "Verisk Nepal",
+  "Deerwalk",
+  "Logpoint",
+  "Khalti",
+  "Tootle",
+  "Daraz Nepal",
+];
+
+export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  return (
+    <div className="bg-white overflow-hidden">
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
+        <motion.div style={{ y: heroY }} className="absolute inset-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1731053205641-6f0be59d42e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxOZXBhbCUyMEhpbWFsYXlhJTIwbW91bnRhaW5zJTIwc3VucmlzZXxlbnwxfHx8fDE3NzU4OTg2NzF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Nepal Himalaya"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80" />
+        </motion.div>
+
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-32">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="h-px w-12 bg-blue-500" />
+              <span className="text-blue-600 text-sm tracking-widest uppercase" style={{ fontWeight: 600 }}>
+                Nepal's Digital Pioneers
+              </span>
+            </div>
+
+            <h1
+              className="text-5xl sm:text-6xl md:text-[5.5rem] text-gray-900 mb-8"
+              style={{ fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.03em" }}
+            >
+              Forging{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Digital
+              </span>
+              <br />
+              Legacy.
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-xl leading-relaxed">
+              We architect Nepal's digital future — blending resilience with cutting-edge innovation to build software that endures and empowers.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Link
+                to="/contact"
+                className="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full inline-flex items-center gap-3 transition-all hover:shadow-xl"
+                style={{ fontWeight: 600 }}
+              >
+                Start Your Project
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/services"
+                className="bg-white/80 backdrop-blur hover:bg-white text-gray-900 px-8 py-4 rounded-full border border-gray-200 hover:border-gray-300 transition-all hover:shadow-lg"
+                style={{ fontWeight: 600 }}
+              >
+                Our Services
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* About Preview */}
+      <section className="py-28 px-6 lg:px-12 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <span className="text-blue-600 text-sm tracking-widest uppercase mb-6 block" style={{ fontWeight: 600 }}>About Us</span>
+          <h2 className="text-4xl md:text-5xl text-gray-900 mb-8" style={{ fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            We don't just write code.{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">We build futures.</span>
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-3xl mx-auto">
+            Tech Gurkha is a Kathmandu-based tech company building world-class digital products. Founded on the principles of Gurkha resilience, we craft software solutions that power businesses across Nepal and beyond.
+          </p>
+          <p className="text-gray-500 leading-relaxed mb-10 max-w-3xl mx-auto">
+            Backed by both Google and Microsoft with over $400K in combined grants, we combine global-standard engineering with deep local expertise. From AI-powered platforms to enterprise SaaS — we deliver products that make a real difference.
+          </p>
+          <Link to="/about" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors group" style={{ fontWeight: 600 }}>
+            Learn more about us
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Our Achievements */}
+      <section className="py-24 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-blue-600 text-sm tracking-widest uppercase" style={{ fontWeight: 600 }}>Our Achievements</span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-10 border border-blue-200 text-center group hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Globe className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="text-4xl md:text-5xl text-gray-900 mb-2" style={{ fontWeight: 800 }}>$250K</div>
+              <div className="text-gray-600" style={{ fontWeight: 500 }}>Google Grant</div>
+            </div>
+            <div className="relative bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-10 border border-purple-200 text-center group hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-6 h-6 text-purple-600" />
+              </div>
+              <div className="text-4xl md:text-5xl text-gray-900 mb-2" style={{ fontWeight: 800 }}>$150K</div>
+              <div className="text-gray-600" style={{ fontWeight: 500 }}>Microsoft Grant</div>
+            </div>
+            <div className="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-10 border border-emerald-200 text-center group hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-emerald-600" />
+              </div>
+              <div className="text-4xl md:text-5xl text-gray-900 mb-2" style={{ fontWeight: 800 }}>500+</div>
+              <div className="text-gray-600" style={{ fontWeight: 500 }}>Students Reached Overall Nepal</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-28 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-12 bg-blue-500" />
+                <span className="text-blue-600 text-sm tracking-widest uppercase" style={{ fontWeight: 600 }}>What We Do</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl text-gray-900" style={{ fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+                Our Services
+              </h2>
+            </div>
+            <Link to="/services" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors group shrink-0" style={{ fontWeight: 600 }}>
+              View all services
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all h-full hover:-translate-y-1"
+              >
+                <div className={`${service.color} w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                  <service.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl text-gray-900 mb-3" style={{ fontWeight: 700 }}>{service.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Clients */}
+      <section className="py-28 px-6 lg:px-12 bg-gray-50 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="flex items-center gap-3 justify-center mb-4">
+              <div className="h-px w-12 bg-blue-500" />
+              <span className="text-blue-600 text-sm tracking-widest uppercase" style={{ fontWeight: 600 }}>Trusted By</span>
+              <div className="h-px w-12 bg-blue-500" />
+            </div>
+            <h2 className="text-4xl md:text-5xl text-gray-900" style={{ fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+              Our Clients
+            </h2>
+          </div>
+
+          <div className="relative overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+
+            <motion.div
+              className="flex gap-8 mb-8"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            >
+              {[...clients, ...clients].map((client, i) => (
+                <div
+                  key={`row1-${i}`}
+                  className="flex-shrink-0 bg-white hover:bg-blue-50 border border-gray-100 hover:border-blue-200 rounded-2xl px-10 py-7 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <span className="text-gray-400 group-hover:text-blue-600 text-lg whitespace-nowrap transition-colors" style={{ fontWeight: 700 }}>
+                    {client}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="flex gap-8"
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            >
+              {[...clients.slice().reverse(), ...clients.slice().reverse()].map((client, i) => (
+                <div
+                  key={`row2-${i}`}
+                  className="flex-shrink-0 bg-white hover:bg-blue-50 border border-gray-100 hover:border-blue-200 rounded-2xl px-10 py-7 flex items-center justify-center transition-all duration-300 group"
+                >
+                  <span className="text-gray-400 group-hover:text-blue-600 text-lg whitespace-nowrap transition-colors" style={{ fontWeight: 700 }}>
+                    {client}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-28 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 justify-center mb-4">
+              <div className="h-px w-12 bg-blue-500" />
+              <span className="text-blue-600 text-sm tracking-widest uppercase" style={{ fontWeight: 600 }}>Why Tech Gurkha</span>
+              <div className="h-px w-12 bg-blue-500" />
+            </div>
+            <h2 className="text-4xl md:text-5xl text-gray-900 mb-4" style={{ fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+              Built different.
+            </h2>
+            <p className="text-lg text-gray-600">
+              We bring a unique combination of technical excellence, creative thinking, and unwavering commitment.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {whyUs.map((item) => (
+              <div
+                key={item.title}
+                className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all group"
+              >
+                <div className="w-12 h-12 bg-white group-hover:bg-blue-50 rounded-xl flex items-center justify-center mb-5 transition-colors border border-gray-100">
+                  <item.icon className="w-6 h-6 text-gray-600 group-hover:text-blue-600 transition-colors" />
+                </div>
+                <h3 className="text-lg text-gray-900 mb-2" style={{ fontWeight: 700 }}>{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-[15px]">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CyberUtsav Events Banner */}
+      <section className="py-28 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl">
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1730134322176-862f1cf9bc9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwY29uZmVyZW5jZSUyMGV2ZW50JTIwY3Jvd2QlMjBzdGFnZXxlbnwxfHx8fDE3NzU4OTg2NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="CyberUtsav event"
+              className="w-full h-[500px] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/40" />
+
+            <div className="absolute inset-0 flex items-center">
+              <div className="max-w-2xl px-12 md:px-20">
+                <div className="flex items-center gap-2 mb-6">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span className="text-green-400 text-sm" style={{ fontWeight: 600 }}>4 Cities • 500+ Participants</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl text-white mb-6" style={{ fontWeight: 800, lineHeight: 1.1 }}>
+                  CyberUtsav — Nepal's Premier Tech Event
+                </h2>
+                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                  From Itahari to Chitwan to Kathmandu — our flagship hackathon series is transforming Nepal's tech landscape.
+                </p>
+                <a
+                  href="https://cyberutsav.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white text-gray-900 px-8 py-4 rounded-full inline-flex items-center gap-3 hover:shadow-xl transition-all"
+                  style={{ fontWeight: 600 }}
+                >
+                  Explore CyberUtsav
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-blue-50/50 to-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl text-gray-900 mb-6" style={{ fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            Ready to forge your{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">digital legacy?</span>
+          </h2>
+          <p className="text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
+            Let's build something extraordinary together.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-full inline-flex items-center gap-3 transition-all hover:shadow-xl text-lg"
+              style={{ fontWeight: 600 }}
+            >
+              Start Your Project
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/services"
+              className="bg-white hover:bg-gray-50 text-gray-900 px-10 py-5 rounded-full border border-gray-200 hover:border-gray-300 transition-all text-lg"
+              style={{ fontWeight: 600 }}
+            >
+              Explore Services
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
